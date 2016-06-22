@@ -4,3 +4,4 @@
 /CultureRegistrar.Server/*/bin
 /CultureRegistrar.Server/*/obj
 /CultureRegistrar.Server/packages
+/CultureRegistrar.WebClient/node_modules
