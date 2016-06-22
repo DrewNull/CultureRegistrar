@@ -3,3 +3,9 @@
 ################################################################################
 
 /CultureRegistrar.Server/bin
+/CultureRegistrar.Server/obj/Debug
+/CultureRegistrar.Server/CultureRegistrar.Server.csproj.user
+/CultureRegistrar.Server.Application/bin/Debug
+/CultureRegistrar.Server.Application/obj/Debug
+/packages
+/.vs
