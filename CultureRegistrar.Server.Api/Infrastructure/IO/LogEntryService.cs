@@ -1,4 +1,4 @@
-﻿namespace CultureRegistrar.Server.Infrastructure.IO
+﻿namespace CultureRegistrar.Server.Api.Infrastructure.IO
 {
     using System.Collections.Generic;
     using System.IO;

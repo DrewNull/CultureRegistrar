@@ -1,9 +1,8 @@
-namespace CultureRegistrar.Server
+namespace CultureRegistrar.Server.Api
 {
     using System.Web.Http;
     using Application;
     using Controllers;
-    using Infrastructure;
     using Infrastructure.IO;
     using Microsoft.Practices.Unity;
     using Unity.WebApi;

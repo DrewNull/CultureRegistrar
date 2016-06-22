@@ -1,11 +1,5 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/CultureRegistrar.Server/bin
-/CultureRegistrar.Server/obj/Debug
-/CultureRegistrar.Server/CultureRegistrar.Server.csproj.user
-/CultureRegistrar.Server.Application/bin/Debug
-/CultureRegistrar.Server.Application/obj/Debug
+﻿*.user
+/*/bin
+/*/obj
 /packages
 /.vs

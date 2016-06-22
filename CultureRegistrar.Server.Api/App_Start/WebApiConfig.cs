@@ -1,7 +1,7 @@
-﻿using System.Web.Http;
-
-namespace CultureRegistrar.Server
+﻿namespace CultureRegistrar.Server.Api
 {
+    using System.Web.Http;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CultureRegistrar.Server")]
+[assembly: AssemblyTitle("CultureRegistrar.Server.Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CultureRegistrar.Server")]
+[assembly: AssemblyProduct("CultureRegistrar.Server.Api")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("442b9296-ef9e-43d7-b043-b94d8a254453")]
+[assembly: Guid("054f2ce1-d4c9-417c-8c85-a9e4ac580457")]
 
 // Version information for an assembly consists of the following four values:
 //

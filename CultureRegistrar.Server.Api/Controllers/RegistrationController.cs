@@ -1,4 +1,4 @@
-﻿namespace CultureRegistrar.Server.Controllers
+﻿namespace CultureRegistrar.Server.Api.Controllers
 {
     using System;
     using System.Collections.Generic;

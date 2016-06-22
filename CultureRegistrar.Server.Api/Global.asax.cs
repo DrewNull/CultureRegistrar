@@ -1,7 +1,7 @@
-﻿using System.Web.Http;
-
-namespace CultureRegistrar.Server
+﻿namespace CultureRegistrar.Server.Api
 {
+    using System.Web.Http;
+
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
