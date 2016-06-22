@@ -1,6 +1,6 @@
 ﻿# 
 *.user
-/.vs
-/*/bin
-/*/obj
-/packages
+/CultureRegistrar.Server/.vs
+/CultureRegistrar.Server/*/bin
+/CultureRegistrar.Server/*/obj
+/CultureRegistrar.Server/packages
