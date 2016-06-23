@@ -9,14 +9,12 @@
     {
         public IEnumerable<Culture> Get()
         {
-            var cultureInfos = CultureInfo.GetCultures(CultureTypes.UserCustomCulture);
+            var cultures = CultureInfo
+                .GetCultures(CultureTypes.UserCustomCulture)
+                .Select(CultureFactory.Create)
+                .OrderBy(x => x.Code);
 
-            foreach (var cultureInfo in cultureInfos)
-            {
-                var culture = CultureFactory.Create(cultureInfo);
-
-                yield return culture;
-            }
+            return cultures;
         }
 
         public CultureRegisterResult Register(string cultureName)
