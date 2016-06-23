@@ -3,8 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using Application;
 
+    [EnableCors("*", "*", "*")]
     [RoutePrefix("registration")]
     public class RegistrationController : ApiController
     {
