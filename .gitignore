@@ -5,3 +5,5 @@
 /CultureRegistrar.Server/*/obj
 /CultureRegistrar.Server/packages
 /CultureRegistrar.WebClient/node_modules
+/CultureRegistrar.WebClient/gulp-config-local.js
+!/CultureRegistrar.WebClient/gulp-config-local.js.example

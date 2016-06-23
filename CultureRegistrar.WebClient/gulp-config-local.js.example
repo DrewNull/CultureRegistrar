@@ -1,0 +1,4 @@
+// rename this file to "gulp-config-local.js" and specify your own webroot below
+module.exports = {
+    webroot: 'D:\\wwwroot\\inetpub\\culture-registrar-webclient'
+};
