@@ -9,6 +9,8 @@
     {
         public IEnumerable<Culture> Get()
         {
+            CultureInfo.CurrentCulture.ClearCachedData();
+
             var cultures = CultureInfo
                 .GetCultures(CultureTypes.UserCustomCulture)
                 .Select(CultureFactory.Create)
@@ -19,6 +21,8 @@
 
         public CultureRegisterResult Register(string cultureName)
         {
+            CultureInfo.CurrentCulture.ClearCachedData();
+
             var resultFactory = new CultureRegisterResultFactory(cultureName);
 
             try
@@ -57,9 +61,9 @@
                 {
                     return resultFactory.Create(CultureRegisterStatus.ErrorAlreadyExists);
                 }
-
+                
                 var builder = new CultureAndRegionInfoBuilder(cultureName, CultureAndRegionModifiers.None);
-
+                
                 // try to load existing info for the language
                 var languageInfo = new CultureInfo(languageCode);
                 builder.LoadDataFromCultureInfo(languageInfo);
@@ -89,6 +93,8 @@
 
         public CultureUnregisterResult Unregister(string cultureName)
         {
+            CultureInfo.CurrentCulture.ClearCachedData();
+
             var resultFactory = new CultureUnregisterResultFactory(cultureName);
 
             try

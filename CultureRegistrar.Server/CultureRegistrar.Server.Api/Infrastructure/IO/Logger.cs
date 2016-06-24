@@ -32,7 +32,7 @@
         public static string GetRegistrationResultMessage<T>(T result, string message)
             where T : CultureRegistrationResultBase
         {
-            return $"{result.Timestamp.ToString("yyyy-MM-dd hh:mm:ss")} {message}";
+            return $"{result.Timestamp.ToString("yyyy-MM-dd hh:mm:ss tt")} {message}";
         }
 
         private static string GetRegisterResultMessage(CultureRegisterResult result)
@@ -92,7 +92,7 @@
 
             Directory.CreateDirectory(logDirectoryPath);
 
-            File.WriteAllLines($"{logDirectoryPath}\\{DateTime.Now.ToString("yyyyMMddhhmmss")}.txt", logEntries);
+            File.WriteAllLines($"{logDirectoryPath}\\{DateTime.Now.ToString("yyyyMMddhhmmsstt")}.txt", logEntries);
         }
     }
 }
