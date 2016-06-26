@@ -10,11 +10,16 @@
     {
         public IEnumerable<LogEntryBatch> Get()
         {
+            foreach (var logEntryBatch in GetFiles()) yield return logEntryBatch;
+        }
+
+        private static IEnumerable<LogEntryBatch> GetFiles()
+        {
             var directoryPath = HttpContext.Current.Server.MapPath(Constants.LogDirectoryPath);
 
             var directory = new DirectoryInfo(directoryPath);
 
-            var files = directory.GetFiles("*.txt").Reverse();
+            var files = directory.GetFiles("*.txt").OrderByDescending(x => x.Name);
 
             foreach (var file in files)
             {

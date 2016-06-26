@@ -24,7 +24,7 @@ app.controller('ListController', [
             return _.some($scope.selectedCultures, culture);
         };
 
-        $scope.$on('culturesRegistered', function() {
+        $scope.$on('culturesRegistered', function(event, args) {
             list();
         });
 
@@ -37,13 +37,8 @@ app.controller('ListController', [
             var cultures = _.map($scope.selectedCultures, 'code');
             cultureService.unregister(cultures).finally(
                 function() {
-
-                    // 1. refresh list
                     list();
-
-                    // 2. emit culturesUnregistered event
                     $rootScope.$broadcast('culturesUnregistered');
-
                 }
             );
         };

@@ -92,7 +92,7 @@
 
             Directory.CreateDirectory(logDirectoryPath);
 
-            File.WriteAllLines($"{logDirectoryPath}\\{DateTime.Now.ToString("yyyyMMddhhmmsstt")}.txt", logEntries);
+            File.WriteAllLines($"{logDirectoryPath}\\{DateTime.Now.ToString("yyyyMMddHHmmss")}.txt", logEntries);
         }
     }
 }

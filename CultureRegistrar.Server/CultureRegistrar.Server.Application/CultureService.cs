@@ -64,15 +64,12 @@
                 
                 var builder = new CultureAndRegionInfoBuilder(cultureName, CultureAndRegionModifiers.None);
                 
-                // try to load existing info for the language
                 var languageInfo = new CultureInfo(languageCode);
                 builder.LoadDataFromCultureInfo(languageInfo);
 
-                // try to load existing info for the country
                 var regionInfo = new RegionInfo(countryCode);
                 builder.LoadDataFromRegionInfo(regionInfo);
 
-                // provide friendly names for Sitecore
                 builder.CultureEnglishName = $"{language.EnglishName} ({country.EnglishName})";
                 builder.CultureNativeName = $"{language.NativeName} ({country.NativeName})";
 

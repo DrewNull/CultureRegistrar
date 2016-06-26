@@ -33,6 +33,11 @@
                             History
                         </a>
                     </li>
+                    <li>
+                        <a href="#settings" data-toggle="tab">
+                            Settings
+                        </a>
+                    </li>
                 </ul>
 
                 <br />
@@ -95,11 +100,25 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane" id="history">
 
-                        History goes here
+                    <div class="tab-pane" id="history" ng-controller="HistoryController">
+
+                        <div ng-repeat="logEntryBatch in logEntryBatches">
+                            <p>
+                                <div ng-repeat="logEntry in logEntryBatch.logEntries">
+                                    {{ logEntry }}
+                                </div>
+                            </p>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="tab-pane" id="settings">
+
+                        Settings go here
 
                     </div>
+
                 </div>
 
             </div>

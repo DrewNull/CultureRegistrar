@@ -1,8 +1,8 @@
 var app = require('../app');
 
 app.factory('HistoryService', [
-    '$http', 
-    function ($http) {
+    '$http', '$log', 
+    function ($http, $log) {
         var url = 'http://culture-registrar/history';
         return {
             list: function() {
