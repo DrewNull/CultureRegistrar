@@ -34,8 +34,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#settings" data-toggle="tab">
-                            Settings
+                        <a href="#admin" data-toggle="tab">
+                            Admin
                         </a>
                     </li>
                 </ul>
@@ -45,6 +45,7 @@
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="registration" ng-controller="RegistrationController">
+
                         <div class="panel panel-default">
                             <div class="panel-heading">Register New Custom Cultures</div>
                             <div class="panel-body">
@@ -103,19 +104,52 @@
 
                     <div class="tab-pane" id="history" ng-controller="HistoryController">
 
-                        <div ng-repeat="logEntryBatch in logEntryBatches">
-                            <p>
-                                <div ng-repeat="logEntry in logEntryBatch.logEntries">
-                                    {{ logEntry }}
-                                </div>
-                            </p>
-                        </div>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr ng-repeat="logEntryBatch in logEntryBatches">
+                                    <td>
+                                        <div ng-repeat="logEntry in logEntryBatch.logEntries">
+                                            {{ logEntry }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         
                     </div>
                     
-                    <div class="tab-pane" id="settings">
-
-                        Settings go here
+                    <div class="tab-pane" id="admin">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Settings</div>
+                            <div class="panel-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="cultureRegistrarServerUrl">Culture Registrar Server URL</label>
+                                        <input class="form-control" 
+                                               id="cultureRegistrarServerUrl" 
+                                               placeholder="http://culture-registrar"
+                                               type="text"  />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Dependent App Pools</div>
+                            <div class="panel-body">
+                                <p>
+                                    TBD
+                                </p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" rows="10" ng-model="cultureString" placeholder="Space-delimited custom culture codes (e.g., es-DE de-US en-MX)"
+                                    />
+                                </div>
+                                <button class="btn btn-default" type="submit" ng-click="register()" ng-disabled="!hasCultureString()">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
 
                     </div>
 
