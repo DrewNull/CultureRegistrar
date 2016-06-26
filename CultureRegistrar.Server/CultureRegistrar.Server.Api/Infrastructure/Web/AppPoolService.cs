@@ -1,18 +1,34 @@
 ﻿namespace CultureRegistrar.Server.Api.Infrastructure.Web
 {
     using System;
+    using System.Collections.Generic;
     using System.Web;
     using Application;
     using Microsoft.Web.Administration;
 
-    public class CultureCacheBuster : ICultureCacheBuster
+    public class AppPoolService : IAppPoolService
     {
-        public void BustCache()
+        public void RecycleAppPools(IEnumerable<string> appPoolNames)
+        {
+            var serverManager = new ServerManager();
+
+            foreach (string appPoolName in appPoolNames)
+            {
+                RecycleAppPool(appPoolName, serverManager);
+            }
+        }
+
+        public void RecycleCurrentAppPool()
         {
             var serverManager = new ServerManager();
 
             string appPoolName = GetCurrentAppPoolName(serverManager);
 
+            RecycleAppPool(appPoolName, serverManager);
+        }
+
+        private static void RecycleAppPool(string appPoolName, ServerManager serverManager)
+        {
             if (string.IsNullOrWhiteSpace(appPoolName))
                 return;
 

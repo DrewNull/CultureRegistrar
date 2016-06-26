@@ -53,7 +53,7 @@
     <Compile Include="CultureUnregisterResult.cs" />
     <Compile Include="CultureUnregisterResultFactory.cs" />
     <Compile Include="CultureUnregisterStatus.cs" />
-    <Compile Include="ICultureCacheBuster.cs" />
+    <Compile Include="IAppPoolService.cs" />
     <Compile Include="ICultureService.cs" />
     <Compile Include="ILogEntryService.cs" />
     <Compile Include="ILogger.cs" />

@@ -6,7 +6,7 @@
     {
         IEnumerable<Culture> Get();
 
-        IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool bustCache = true);
+        IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool recycleAppPool = true);
 
         IEnumerable<CultureUnregisterResult> Unregister(IEnumerable<string> cultureNames);
     }

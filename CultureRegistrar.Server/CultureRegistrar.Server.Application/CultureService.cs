@@ -7,13 +7,13 @@
 
     public class CultureService : ICultureService
     {
-        private readonly ICultureCacheBuster _cultureCacheBuster;
+        private readonly IAppPoolService _appPoolService;
 
-        public CultureService(ICultureCacheBuster cultureCacheBuster)
+        public CultureService(IAppPoolService appPoolService)
         {
-            if (cultureCacheBuster == null) throw new ArgumentNullException(nameof(cultureCacheBuster));
+            if (appPoolService == null) throw new ArgumentNullException(nameof(appPoolService));
 
-            this._cultureCacheBuster = cultureCacheBuster;
+            this._appPoolService = appPoolService;
         }
 
         public IEnumerable<Culture> Get()
@@ -26,13 +26,13 @@
             return cultures;
         }
 
-        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool bustCache = true)
+        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool recycleAppPool = true)
         {
             var results = cultureNames.Select(this.Register);
 
-            if (bustCache)
+            if (recycleAppPool)
             {
-                this._cultureCacheBuster.BustCache();
+                this._appPoolService.RecycleCurrentAppPool();
             }
 
             return results;

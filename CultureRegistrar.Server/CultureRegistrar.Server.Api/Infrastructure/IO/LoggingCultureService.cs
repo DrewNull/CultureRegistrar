@@ -24,9 +24,9 @@
             return this._service.Get();
         }
 
-        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool bustCache = true)
+        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool recycleAppPool = true)
         {
-            var results = this._service.Register(cultureNames, bustCache);
+            var results = this._service.Register(cultureNames, recycleAppPool);
 
             this._logger.Log(results);
 

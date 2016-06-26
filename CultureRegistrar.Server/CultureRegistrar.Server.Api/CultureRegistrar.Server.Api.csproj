@@ -131,6 +131,7 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,7 +141,7 @@
     <Compile Include="Infrastructure\IO\LogEntryService.cs" />
     <Compile Include="Infrastructure\IO\Logger.cs" />
     <Compile Include="Infrastructure\IO\LoggingCultureService.cs" />
-    <Compile Include="Infrastructure\Web\CultureCacheBuster.cs" />
+    <Compile Include="Infrastructure\Web\AppPoolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -23,7 +23,7 @@ namespace CultureRegistrar.Server.Api
             container.RegisterType<ILogger, Logger>();
 
             // Infrastructure - Web
-            container.RegisterType<ICultureCacheBuster, CultureCacheBuster>();
+            container.RegisterType<IAppPoolService, AppPoolService>();
 
             // API
             container.RegisterType<RegistrationController>(
