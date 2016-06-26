@@ -4,6 +4,7 @@ namespace CultureRegistrar.Server.Api
     using Application;
     using Controllers;
     using Infrastructure.IO;
+    using Infrastructure.Web;
     using Microsoft.Practices.Unity;
     using Unity.WebApi;
 
@@ -16,10 +17,13 @@ namespace CultureRegistrar.Server.Api
             // Application
             container.RegisterType<ICultureService, CultureService>();
 
-            // Infrastructure
+            // Infrastructure - IO
             container.RegisterType<ICultureService, LoggingCultureService>("Logging");
             container.RegisterType<ILogEntryService, LogEntryService>();
             container.RegisterType<ILogger, Logger>();
+
+            // Infrastructure - Web
+            container.RegisterType<ICultureCacheBuster, CultureCacheBuster>();
 
             // API
             container.RegisterType<RegistrationController>(

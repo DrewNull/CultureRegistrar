@@ -7,10 +7,17 @@
 
     public class CultureService : ICultureService
     {
+        private readonly ICultureCacheBuster _cultureCacheBuster;
+
+        public CultureService(ICultureCacheBuster cultureCacheBuster)
+        {
+            if (cultureCacheBuster == null) throw new ArgumentNullException(nameof(cultureCacheBuster));
+
+            this._cultureCacheBuster = cultureCacheBuster;
+        }
+
         public IEnumerable<Culture> Get()
         {
-            CultureInfo.CurrentCulture.ClearCachedData();
-
             var cultures = CultureInfo
                 .GetCultures(CultureTypes.UserCustomCulture)
                 .Select(CultureFactory.Create)
@@ -19,10 +26,25 @@
             return cultures;
         }
 
-        public CultureRegisterResult Register(string cultureName)
+        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool bustCache = true)
         {
-            CultureInfo.CurrentCulture.ClearCachedData();
+            var results = cultureNames.Select(this.Register);
 
+            if (bustCache)
+            {
+                this._cultureCacheBuster.BustCache();
+            }
+
+            return results;
+        }
+
+        public IEnumerable<CultureUnregisterResult> Unregister(IEnumerable<string> cultureNames)
+        {
+            return cultureNames.Select(this.Unregister);
+        }
+
+        private CultureRegisterResult Register(string cultureName)
+        {
             var resultFactory = new CultureRegisterResultFactory(cultureName);
 
             try
@@ -83,15 +105,8 @@
             }
         }
 
-        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames)
+        private CultureUnregisterResult Unregister(string cultureName)
         {
-            return cultureNames.Select(this.Register);
-        }
-
-        public CultureUnregisterResult Unregister(string cultureName)
-        {
-            CultureInfo.CurrentCulture.ClearCachedData();
-
             var resultFactory = new CultureUnregisterResultFactory(cultureName);
 
             try
@@ -114,11 +129,6 @@
             {
                 return resultFactory.Create(CultureUnregisterStatus.ErrorOther, exception);
             }
-        }
-
-        public IEnumerable<CultureUnregisterResult> Unregister(IEnumerable<string> cultureNames)
-        {
-            return cultureNames.Select(this.Unregister);
         }
     }
 }

@@ -6,11 +6,7 @@
     {
         IEnumerable<Culture> Get();
 
-        CultureRegisterResult Register(string cultureName);
-
-        IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames);
-
-        CultureUnregisterResult Unregister(string cultureName);
+        IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool bustCache = true);
 
         IEnumerable<CultureUnregisterResult> Unregister(IEnumerable<string> cultureNames);
     }

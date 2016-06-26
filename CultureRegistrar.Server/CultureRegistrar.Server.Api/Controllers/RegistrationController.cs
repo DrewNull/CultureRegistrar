@@ -30,20 +30,14 @@
         [Route("")]
         public void Put(IEnumerable<string> cultures)
         {
-            foreach (string cultureName in cultures)
-            {
-                this._cultureService.Register(cultureName);
-            }
+            this._cultureService.Register(cultures, true);
         }
 
         [HttpDelete]
         [Route("")]
         public void Delete(IEnumerable<string> cultures)
         {
-            foreach (string cultureName in cultures)
-            {
-                this._cultureService.Unregister(cultureName);
-            }
+            this._cultureService.Unregister(cultures);
         }
     }
 }

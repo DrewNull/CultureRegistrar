@@ -24,31 +24,13 @@
             return this._service.Get();
         }
 
-        public CultureRegisterResult Register(string cultureName)
+        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames, bool bustCache = true)
         {
-            var result = this._service.Register(cultureName);
-
-            this._logger.Log(result);
-
-            return result;
-        }
-
-        public IEnumerable<CultureRegisterResult> Register(IEnumerable<string> cultureNames)
-        {
-            var results = this._service.Register(cultureNames);
+            var results = this._service.Register(cultureNames, bustCache);
 
             this._logger.Log(results);
 
             return results;
-        }
-
-        public CultureUnregisterResult Unregister(string cultureName)
-        {
-            var result = this._service.Unregister(cultureName);
-
-            this._logger.Log(result);
-
-            return result;
         }
 
         public IEnumerable<CultureUnregisterResult> Unregister(IEnumerable<string> cultureNames)

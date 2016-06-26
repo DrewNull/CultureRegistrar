@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,7 @@
     <Compile Include="CultureUnregisterResult.cs" />
     <Compile Include="CultureUnregisterResultFactory.cs" />
     <Compile Include="CultureUnregisterStatus.cs" />
+    <Compile Include="ICultureCacheBuster.cs" />
     <Compile Include="ICultureService.cs" />
     <Compile Include="ILogEntryService.cs" />
     <Compile Include="ILogger.cs" />
