@@ -1,6 +1,6 @@
 {
     "dependentAppPoolNames": [
-        "exampleAppPool1"
+        "exampleAppPool"
     ], 
     "serverUrl": "http://culture-registrar" 
 }

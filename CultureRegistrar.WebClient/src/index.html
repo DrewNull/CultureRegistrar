@@ -118,36 +118,34 @@
                         
                     </div>
                     
-                    <div class="tab-pane" id="admin">
+                    <div class="tab-pane" id="admin" ng-controller="AdminController">
                         
                         <div class="panel panel-default">
                             <div class="panel-heading">Settings</div>
                             <div class="panel-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="cultureRegistrarServerUrl">Culture Registrar Server URL</label>
-                                        <input class="form-control" 
-                                               id="cultureRegistrarServerUrl" 
-                                               placeholder="http://culture-registrar"
-                                               type="text"  />
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        Server URL
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Dependent App Pools</div>
-                            <div class="panel-body">
-                                <p>
-                                    TBD
-                                </p>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" rows="10" ng-model="cultureString" placeholder="Space-delimited custom culture codes (e.g., es-DE de-US en-MX)"
-                                    />
+                                    <div class="col-xs-8">
+                                        {{ serverUrl }}
+                                    </div>
                                 </div>
-                                <button class="btn btn-default" type="submit" ng-click="register()" ng-disabled="!hasCultureString()">
-                                    Register
-                                </button>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        Dependent App Pools
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <ul>
+                                            <li ng-repeat="appPoolName in dependentAppPoolNames">
+                                                {{ appPoolName }}
+                                            </li>
+                                        </ul>
+                                        <button class="btn btn-default" type="submit" ng-click="recycleDependentAppPools()">
+                                            Recycle
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
