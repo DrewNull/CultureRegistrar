@@ -21,7 +21,7 @@
 
         [HttpPost]
         [Route("")]
-        public void Put(IEnumerable<string> appPoolNames)
+        public void Post(IEnumerable<string> appPoolNames)
         {
             this._appPoolService.RecycleAppPools(appPoolNames);
         }

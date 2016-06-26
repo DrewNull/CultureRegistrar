@@ -8,10 +8,11 @@ app.factory('AdminService', [
 
             getConfig: function() {
                 var promise = $http
-                    .get('/static/js/config.json')
+                    .get('./static/js/config.json')
                     .then(
                         function (response) {
                             $log.info('admin.getConfig=>success');
+                            return response.data;
                         }, 
                         function (response) {
                             $log.error('admin.getConfig=>error');

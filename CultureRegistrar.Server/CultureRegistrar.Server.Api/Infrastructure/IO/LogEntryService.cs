@@ -10,12 +10,17 @@
     {
         public IEnumerable<LogEntryBatch> Get()
         {
-            foreach (var logEntryBatch in GetFiles()) yield return logEntryBatch;
+            foreach (var logEntryBatch in GetFiles())
+            {
+                yield return logEntryBatch;
+            }
         }
 
         private static IEnumerable<LogEntryBatch> GetFiles()
         {
             var directoryPath = HttpContext.Current.Server.MapPath(Constants.LogDirectoryPath);
+
+            Directory.CreateDirectory(directoryPath);
 
             var directory = new DirectoryInfo(directoryPath);
 
