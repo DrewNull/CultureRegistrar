@@ -16,6 +16,7 @@ app.factory('AdminService', [
                         }, 
                         function (response) {
                             $log.error('admin.getConfig=>error');
+                            $log.error('Rename "/static/js/config.json.example" to "/static/js/config.json".');
                         }
                     );
                 return promise;
