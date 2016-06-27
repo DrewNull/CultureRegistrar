@@ -1,6 +1,4 @@
-// rename this file to config.json
 {
-    // replace this with the app pool names that you would like to recycle
     "dependentAppPoolNames": [
         "exampleAppPool"
     ], 
