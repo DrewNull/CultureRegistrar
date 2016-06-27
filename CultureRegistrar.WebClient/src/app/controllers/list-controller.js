@@ -1,8 +1,8 @@
 var app = require('../app');
 
 app.controller('ListController', [
-    '$rootScope', '$scope', 'CultureService', 
-    function ($rootScope, $scope, cultureService) {
+    '$rootScope', '$scope', 'Constants', 'CultureService', 
+    function ($rootScope, $scope, constants, cultureService) {
         
         $scope.cultures = [];
 
@@ -24,7 +24,7 @@ app.controller('ListController', [
             return _.some($scope.selectedCultures, culture);
         };
 
-        $scope.$on('culturesRegistered', function(event, args) {
+        $scope.$on(constants.eventNames.culturesRegistered, function(event, args) {
             list();
         });
 
@@ -38,7 +38,7 @@ app.controller('ListController', [
             cultureService.unregister(cultures).finally(
                 function() {
                     list();
-                    $rootScope.$broadcast('culturesUnregistered');
+                    $rootScope.$broadcast(constants.eventNames.culturesUnregistered);
                 }
             );
         };

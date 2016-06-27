@@ -1,8 +1,8 @@
 var app = require('../app');
 
 app.controller('HistoryController', [
-    '$scope', 'HistoryService', 
-    function ($scope, historyService) {
+    '$scope', 'Constants', 'HistoryService', 
+    function ($scope, constants, historyService) {
 
         function list() {
             historyService.list().then(
@@ -14,11 +14,11 @@ app.controller('HistoryController', [
 
         $scope.logEntryBatches = [];
 
-        $scope.$on('culturesRegistered', function() {
+        $scope.$on(constants.eventNames.culturesRegistered, function() {
             list();
         });
 
-        $scope.$on('culturesUnregistered', function() {
+        $scope.$on(constants.eventNames.culturesUnregistered, function() {
             list();
         });
 
