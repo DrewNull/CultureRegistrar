@@ -11,5 +11,6 @@ require('./src/app/controllers/registration-controller');
 
 // services
 require('./src/app/services/admin-service');
+require('./src/app/services/config-service');
 require('./src/app/services/culture-service');
 require('./src/app/services/history-service');

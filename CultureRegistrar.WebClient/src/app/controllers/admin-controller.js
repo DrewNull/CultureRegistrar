@@ -1,19 +1,19 @@
 var app = require('../app');
 
 app.controller('AdminController', [
-    '$scope', 'AdminService', 
-    function ($scope, adminService) {
+    '$scope', 'AdminService', 'ConfigService', 
+    function ($scope, adminService, configService) {
 
         $scope.serverUrl = '';
 
         $scope.dependentAppPoolNames = [];
 
         $scope.recycleDependentAppPools = function() {
-            adminService.recycleDependentAppPools($scope.dependentAppPoolNames);
+            adminService.recycleDependentAppPools();
         };
 
         function loadConfig() {
-            adminService
+            configService
                 .getConfig()
                 .then(
                     function(config) {
