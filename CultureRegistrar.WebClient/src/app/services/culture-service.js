@@ -11,11 +11,11 @@ app.factory('CultureService', [
                     url: url
                 }).then(
                     function (response) {
-                        $log.info('list=>success', response);
+                        $log.info('culture.list=>success', response);
                         return response.data; // should be an array of strings (e.g., ['en-US', 'de-DE', 'es-MX'])
                     }, 
                     function (response) {
-                        $log.error('list=>error', response);
+                        $log.error('culture.list=>error', response);
                     }
                 );
                 return promise;
@@ -30,10 +30,10 @@ app.factory('CultureService', [
                     url: url
                 }).then(
                     function (response) {
-                        $log.info('register=>success', response);
+                        $log.info('culture.register=>success', response);
                     }, 
                     function (response) {
-                        $log.error('register=>error', response);
+                        $log.error('culture.register=>error', response);
                     }
                 );
                 return promise;
@@ -48,10 +48,10 @@ app.factory('CultureService', [
                     url: url
                 }).then(
                     function (response) {
-                        $log.info('unregister=>success', response);
+                        $log.info('culture.unregister=>success', response);
                     }, 
                     function (response) {
-                        $log.error('unregister=>error', response);
+                        $log.error('culture.unregister=>error', response);
                     }
                 );
                 return promise;

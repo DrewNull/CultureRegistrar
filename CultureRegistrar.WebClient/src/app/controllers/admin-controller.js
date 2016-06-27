@@ -9,8 +9,7 @@ app.controller('AdminController', [
         $scope.dependentAppPoolNames = [];
 
         $scope.recycleDependentAppPools = function() {
-            adminService
-                .recycleDependentAppPools();
+            adminService.recycleDependentAppPools($scope.dependentAppPoolNames);
         };
 
         function loadConfig() {

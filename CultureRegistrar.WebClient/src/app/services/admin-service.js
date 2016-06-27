@@ -22,11 +22,16 @@ app.factory('AdminService', [
                 return promise;
             }, 
 
-            recycleDependentAppPools: function() {
-                var url = '';
-                var promise = $http
-                    .post(url)
-                    .then(
+            recycleDependentAppPools: function(appPoolNames) {
+                var url = 'http://culture-registrar/admin';
+                var promise = $http({
+                        data: appPoolNames, 
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },  
+                        method: 'POST', 
+                        url: url
+                    }).then(
                         function(response) {
                             $log.info('admin.recycleDependentAppPools=>success', response);
                         }, 

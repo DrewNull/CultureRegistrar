@@ -11,11 +11,11 @@ app.factory('HistoryService', [
                     url: url
                 }).then(
                     function (response) {
-                        $log.info('list=>success', response);
+                        $log.info('history.list=>success', response);
                         return response.data;
                     }, 
                     function (response) {
-                        $log.error('list=>error', response);
+                        $log.error('history.list=>error', response);
                         return [];
                     }
                 );
