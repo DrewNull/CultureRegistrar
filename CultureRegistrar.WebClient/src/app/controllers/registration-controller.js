@@ -1,10 +1,10 @@
 var app = require('../app');
 
 app.controller('RegistrationController', [
-    '$rootScope', '$scope', 'Constants', 'CultureService', 
-    function($rootScope, $scope, constants, cultureService) {
+    '$rootScope', '$scope', 'ConfigService', 'Constants', 'CultureService', 
+    function($rootScope, $scope, configService, constants, cultureService) {
 
-        function splitCulureString() {
+        function splitCultureString() {
             return  $scope.cultureString.match(/[^\s]+/g);
         }
 
@@ -15,13 +15,18 @@ app.controller('RegistrationController', [
         };
 
         $scope.register = function () {
-            var cultures = splitCulureString();
-            cultureService.register(cultures).finally(
-                function() { 
-                    $scope.cultureString = '';
-                    $rootScope.$broadcast(constants.eventNames.culturesRegistered);
+            var cultures = splitCultureString();
+            return configService.getConfig().then(
+                function(config) {
+                    return cultureService.register(config, cultures).then(
+                        function() { 
+                            $scope.cultureString = '';
+                            $rootScope.$broadcast(constants.eventNames.culturesRegistered);
+                        }
+                    );
                 }
             );
         }
+
     }
 ]);

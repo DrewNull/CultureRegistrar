@@ -9,18 +9,20 @@ app.controller('AdminController', [
         $scope.dependentAppPoolNames = [];
 
         $scope.recycleDependentAppPools = function() {
-            adminService.recycleDependentAppPools();
+            return configService.getConfig().then(
+                function (config) {
+                    adminService.recycleDependentAppPools(config);
+                }
+            );
         };
 
         function loadConfig() {
-            configService
-                .getConfig()
-                .then(
-                    function(config) {
-                        $scope.serverUrl = config.serverUrl;
-                        $scope.dependentAppPoolNames = config.dependentAppPoolNames;
-                    }
-                );
+            return configService.getConfig().then(
+                function(config) {
+                    $scope.serverUrl = config.serverUrl;
+                    $scope.dependentAppPoolNames = config.dependentAppPoolNames;
+                }
+            );
         }
 
         loadConfig();

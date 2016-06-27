@@ -1,15 +1,20 @@
 var app = require('../app');
 
 app.controller('HistoryController', [
-    '$scope', 'Constants', 'HistoryService', 
-    function ($scope, constants, historyService) {
+    '$scope', 'ConfigService', 'Constants', 'HistoryService', 
+    function ($scope, configService, constants, historyService) {
 
         function list() {
-            historyService.list().then(
-                function(logEntryBatches) {
-                    $scope.logEntryBatches = logEntryBatches; 
+            return configService.getConfig().then(
+                function(config) {
+                    return historyService.list(config).then(
+                        function(logEntryBatches) {
+                            console.log('logEntryBatches', logEntryBatches);
+                            $scope.logEntryBatches = logEntryBatches; 
+                        }
+                    );
                 }
-            )
+            );
         }
 
         $scope.logEntryBatches = [];

@@ -1,19 +1,22 @@
 var app = require('../app');
 
 app.controller('ListController', [
-    '$rootScope', '$scope', 'Constants', 'CultureService', 
-    function ($rootScope, $scope, constants, cultureService) {
+    '$rootScope', '$scope', 'ConfigService', 'Constants', 'CultureService', 
+    function ($rootScope, $scope, configService, constants, cultureService) {
         
         $scope.cultures = [];
 
         $scope.selectedCultures = [];
 
         function list() {
-            cultureService.list().then(
-                function(cultures) {
-                    $scope.cultures = cultures;
-                }
-            );
+            return configService.getConfig().then(
+                function(config) {
+                    return cultureService.list(config).then(
+                        function(cultures) {
+                            $scope.cultures = cultures;
+                        }
+                    );
+                });
         }
 
         $scope.hasSelectedCultures = function() {
@@ -30,17 +33,19 @@ app.controller('ListController', [
 
         $scope.toggleSelect = function(culture) { 
             $scope.selectedCultures = _.xorBy($scope.selectedCultures, [culture], 'code');
-            console.log($scope.selectedCultures);
         }
 
         $scope.unregister = function() {
             var cultures = _.map($scope.selectedCultures, 'code');
-            cultureService.unregister(cultures).finally(
-                function() {
-                    list();
-                    $rootScope.$broadcast(constants.eventNames.culturesUnregistered);
-                }
-            );
+            return configService.getConfig().then(
+                function(config) {
+                    return cultureService.unregister(config, cultures).then(
+                        function() {
+                            list();
+                            $rootScope.$broadcast(constants.eventNames.culturesUnregistered);
+                        }
+                    );
+                });
         };
 
         list();
