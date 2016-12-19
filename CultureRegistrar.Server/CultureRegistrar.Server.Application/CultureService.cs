@@ -21,6 +21,7 @@
             var cultures = CultureInfo
                 .GetCultures(CultureTypes.UserCustomCulture)
                 .Select(CultureFactory.Create)
+                .Where(x => x != null)
                 .OrderBy(x => x.Code);
 
             return cultures;
