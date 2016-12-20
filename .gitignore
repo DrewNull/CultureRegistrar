@@ -7,3 +7,4 @@
 /CultureRegistrar.WebClient/node_modules
 /CultureRegistrar.WebClient/gulp-config-local.js
 !/CultureRegistrar.WebClient/gulp-config-local.js.example
+/CultureRegistrar.Server/CultureRegistrar.Server.Api/Properties/PublishProfiles/Local.pubxml
